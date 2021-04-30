@@ -34,12 +34,6 @@ variable "routing_mode" {
   default     = "GLOBAL"
 }
 
-variable "project" {
-  type        = string
-  description = "The ID of the project in which the resource belongs. If it is not provided, the provider project is used."
-  default     = ""
-}
-
 variable "delete_routes" {
   type        = bool
   description = "If set to true, default routes (0.0.0.0/0) will be deleted immediately after network creation. Defaults to false."
