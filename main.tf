@@ -3,10 +3,12 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
+      project = var.project_id
       version = "3.64.0"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
+      project = var.project_id
       version = "3.64.0"
     }
   }
@@ -21,7 +23,6 @@ resource "google_compute_network" "vpc_network" {
   mtu                             = var.mtu
   auto_create_subnetworks         = var.auto_create
   routing_mode                    = var.routing_mode
-  project                         = var.project_id
   delete_default_routes_on_create = var.delete_routes
 }
 
