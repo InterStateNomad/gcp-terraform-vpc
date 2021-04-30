@@ -1,5 +1,15 @@
 terraform {
-  required_version = ">= 0.14"
+  required_version = "0.14.9"
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "3.64.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "3.64.0"
+    }
+  }
 }
 
 #################
@@ -11,7 +21,7 @@ resource "google_compute_network" "vpc_network" {
   mtu                             = var.mtu
   auto_create_subnetworks         = var.auto_create
   routing_mode                    = var.routing_mode
-  project                         = var.project
+  project                         = var.project_id
   delete_default_routes_on_create = var.delete_routes
 }
 
@@ -25,8 +35,4 @@ resource "google_compute_subnetwork" "subnetwork" {
   region                   = var.region
   network                  = google_compute_network.vpc_network.name
   private_ip_google_access = var.private_access
-  secondary_ip_range {
-    range_name    = "tf-test-secondary-range-update1"
-    ip_cidr_range = "192.168.10.0/24"
-  }
 }
