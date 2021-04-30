@@ -51,22 +51,22 @@ variable "delete_routes" {
 ####################
 
 variable "subnetwork_name" {
-  type        = string
+  type = string
   description = "The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035."
 }
 
 variable "cidr_range" {
-  type        = string
+  type = string
   description = "The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported."
 }
 
 variable "region" {
-  type        = string
+  type = string
   description = " The GCP region for this subnetwork."
 }
 
 variable "private_access" {
-  type        = bool
+  type = bool
   description = "When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private Google Access."
-  default     = false
+  default = false
 }
